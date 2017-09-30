@@ -33,12 +33,12 @@ function formatTime(seconds) {
 function Db() {
 }
 
-Db.prototype.connect = function( host, port, database, username, password ) {
+Db.prototype.connect = function( url, host, port, database, username, password ) {
 	host 		= host || '127.0.0.1';
 	port 		= port || '27017';
 	database 	= database || 'phdometer';
 	var authentication = username && password ? username + ':' + password + '@' : '';
-	var url = host + ':' + port + '/' + database;
+	url = url || host + ':' + port + '/' + database;
 	console.log( 'connecting to mongodb://' + authentication + url );
 	var self = this;
 	return new Promise( function( resolve, reject ) {

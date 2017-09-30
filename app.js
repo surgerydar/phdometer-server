@@ -31,6 +31,13 @@ var shares = {
 // connect to database
 //
 var db = require('./phdometer.db.js');
+var mongoServiceName = env.DATABASE_SERVICE_NAME.toUpperCase();
+var mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'];
+var mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'];
+var mongoDatabase = process.env[mongoServiceName + '_DATABASE'];
+var mongoPassword = process.env[mongoServiceName + '_PASSWORD'];
+var mongoUser = process.env[mongoServiceName + '_USER'];
+
 db.connect(
     /*
 	env.OPENSHIFT_MONGODB_DB_HOST,
@@ -39,11 +46,12 @@ db.connect(
 	env.OPENSHIFT_MONGODB_DB_USERNAME,
 	env.OPENSHIFT_MONGODB_DB_PASSWORD
     */
-	env.MONGODB_DB_HOST,
-	env.MONGODB_DB_PORT,
-	env.MONGODB_DATABASE,
-	env.MONGODB_USER,
-	env.MONGODB_PASSWORD
+    env.OPENSHIFT_MONGODB_DB_URL || env.MONGO_URL,
+	mongoHost,
+	mongoPort,
+	mongoDatabase,
+	mongoUser,
+	mongoPassword
 ).then( function( db_connection ) {
     //
     // configure express
@@ -306,6 +314,6 @@ db.connect(
 // start app
 //
 console.log( 'starting application' );
-app.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
+app.listen( env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080, env.IP || env.OPENSHIFT_NODEJS_IP || '0.0.0.0', function () {
   console.log('Application worker ' + process.pid + ' started...');
 });
