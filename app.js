@@ -32,11 +32,18 @@ var shares = {
 //
 var db = require('./phdometer.db.js');
 db.connect(
+    /*
 	env.OPENSHIFT_MONGODB_DB_HOST,
 	env.OPENSHIFT_MONGODB_DB_PORT,
 	env.OPENSHIFT_APP_NAME,
 	env.OPENSHIFT_MONGODB_DB_USERNAME,
 	env.OPENSHIFT_MONGODB_DB_PASSWORD
+    */
+	env.MONGODB_DB_HOST,
+	env.MONGODB_DB_PORT,
+	env.MONGODB_DATABASE,
+	env.MONGODB_USER,
+	env.MONGODB_PASSWORD
 ).then( function( db_connection ) {
     //
     // configure express

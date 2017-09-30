@@ -1,8 +1,8 @@
 {
     "twitter" : {
         "client" : {
-            "id" : "id",
-            "secret" : "secret"
+            "id" : "ghhHfU0Ze9gcuHVJmdDoVv1Ly",
+            "secret" : "a0ARVhoKwNzepcwU2Q7yuXPi5ycCRIieLYiGatvzH4HhDCoKfi"
         },
         "auth" : {
             "tokenHost" : "https://api.twitter.com",
