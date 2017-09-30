@@ -1,0 +1,60 @@
+html
+    head
+        title= title
+        link(rel='stylesheet', href='styles/phdometer.css')
+        meta( name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' )
+    body
+        .tab-container#community-tabs( data-target='community', style='position: absolute; left: 0px; top: 1px; right: 0px; height: 50px;' )
+            .tab my activities
+            .tab leaderboard
+        .swipe-view#community( style='position: absolute; left: 0px; top: 50px; right: 0px; bottom: 0px;')
+            .swipe-page#myactivities
+                .list_scroller
+                    for item in myactivities
+                        .list_item
+                            h2 #{item.name}
+                            h3 #{item.type} &nbsp / &nbsp #{item.time} &nbsp / &nbsp #{item.wordcount} &nbsp words &nbsp / &nbsp #{item.wordsperminute} &nbsp wpm 
+                            img.list_item_share( src='images/twitter_circle.png', data-name= item.name, data-type= item.type, data-wordcount= item.wordcount, data-time= item.time, data-wordsperminute= item.wordsperminute, data-platform='twitter' )
+                            img.list_item_share( src='images/facebook_circle.png', style='right: 80px;', data-name= item.name, data-type= item.type, data-wordcount= item.wordcount, data-time= item.time, data-wordsperminute= item.wordsperminute, data-platform='facebook' )
+            .swipe-page#leaderboard
+                .tab-container#leaderboard-tabs( data-target='leaderboard', style='position: absolute; left: 0px; top: 1px; right: 0px; height: 50px;' )
+                    .tab writing
+                    .tab drafting
+                    .tab editing
+                    .tab proofreading
+                    .tab note taking
+                .swipe-view#leaderboard( style='position: absolute; left: 0px; top: 48px; right: 0px; bottom: 0px;')
+                    .swipe-page#writing
+                        .list_scroller
+                            for item in leaderboard.writing
+                                .list_item
+                                    h2 #{item.name} by #{item.username}
+                                    h3 #{item.type} &nbsp / &nbsp #{item.time} &nbsp / &nbsp #{item.wordcount} &nbsp words &nbsp / &nbsp #{item.wordsperminute} &nbsp wpm              
+                    .swipe-page#drafting
+                        .list_scroller
+                            for item in leaderboard.drafting
+                                .list_item
+                                    h2 #{item.name} by #{item.username}
+                                    h3 #{item.type} &nbsp / &nbsp #{item.time} &nbsp / &nbsp #{item.wordcount} &nbsp words &nbsp / &nbsp #{item.wordsperminute} &nbsp wpm              
+                    .swipe-page#editing
+                        .list_scroller
+                            for item in leaderboard.editing
+                                .list_item
+                                    h2 #{item.name} by #{item.username}
+                                    h3 #{item.type} &nbsp / &nbsp #{item.time} &nbsp / &nbsp #{item.wordcount} &nbsp words &nbsp / &nbsp #{item.wordsperminute} &nbsp wpm              
+                    .swipe-page#proofreading
+                        .list_scroller
+                            for item in leaderboard.proofreading
+                                .list_item
+                                    h2 #{item.name} by #{item.username}
+                                    h3 #{item.type} &nbsp / &nbsp #{item.time} &nbsp / &nbsp #{item.wordcount} &nbsp words &nbsp / &nbsp #{item.wordsperminute} &nbsp wpm              
+                    .swipe-page#notetaking
+                        .list_scroller
+                            for item in leaderboard.notetaking
+                                .list_item
+                                    h2 #{item.name} by #{item.username}
+                                    h3 #{item.type} &nbsp / &nbsp #{item.time} &nbsp / &nbsp #{item.wordcount} &nbsp words &nbsp / &nbsp #{item.wordsperminute} &nbsp wpm              
+        script( type='text/javascript', src='scripts/phdometer.swipe-view.js')        
+        script( type='text/javascript', src='scripts/phdometer.js')
+        script( type='text/javascript', src='scripts/phdometer.rest.js')
+        script( type='text/javascript', src='scripts/phdometer.community.js')

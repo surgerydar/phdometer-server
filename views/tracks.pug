@@ -1,0 +1,24 @@
+nav.list_pagination
+	- var previous_attributes = { 'data-collection' : collection, 'data-page' : ( page - 1 ) };
+	if page == 0 
+		.list_pagnation_item.disabled#previous_page <
+	else
+		.list_pagnation_item#previous_page&attributes(previous_attributes) <
+	- var next_attributes = { 'data-collection' : collection, 'data-page' : ( page + 1 ) };
+	- var at_end = page_size * page >= count;
+	if at_end
+		.list_pagnation_item.disabled#next_page >
+	else
+		.list_pagnation_item#next_page&attributes(next_attributes) >
+.list_scroller
+	for item in items
+		.list_item
+			- var track_attributes = { 'data-track-id' : item.TrackID, 'data-name' : item.Name, 'data-artist' : item.Artist, 'data-album' : item.Album, 'data-track-duration' : item.TotalTime };
+			- var artist_attributes = { 'data-artist' : item.Artist };
+			- var album_attributes = { 'data-album' : item.Album };
+			h1.track
+				span.track&attributes(track_attributes) #{item.Name}
+			h3
+				span.artist&attributes(artist_attributes) #{item.Artist} &nbsp /
+				span.album&attributes(album_attributes) &nbsp #{item.Album}
+					

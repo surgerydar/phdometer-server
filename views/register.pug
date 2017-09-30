@@ -1,0 +1,37 @@
+html
+    head
+        title= title
+        link(rel='stylesheet', href='styles/phdometer.css')
+        meta( name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' )
+    body
+        h1( style='text-align: center; padding-top: 8px;' ) Register
+        form#register(action='/signup', method='POST' class='authentication' enctype='application/x-www-form-urlencoded')
+            input(type='text', name='username', placeholder='Username', required, autofocus)
+            input#password(type='password', name='password', placeholder='Password', required)
+            input#confirm(type='password', name='confirm', placeholder='Confirm Password', required)
+            input(type='email', name='email', placeholder='Email',required)
+            input(type='text', name='firstName', placeholder='First Name',required)
+            input(type='text', name='lastName', placeholder='Last Name',required)
+            button(class='login', type='submit') Register
+            br
+            a(href='/login', class='text-center new-account') Login
+            #message
+                if message
+                    h1.text-center.error-message #{message}
+            
+        script.
+            var form = document.querySelector('#register');
+            form.addEventListener( 'submit', function(evt) {
+                if ( form.checkValidity() ) {
+                    var password = document.querySelector('#password');
+                    var confirm = document.querySelector('#confirm');
+                    if ( password.length < 6 ) {
+                        confirm.setCustomValidity('password must be 6 characters or longer');
+                    } else if ( password.value !== confirm.value ) {
+                        confirm.setCustomValidity('passwords must match');
+                        evt.preventDefault();
+                    }
+                }
+            } );
+        script( type='text/javascript', src='scripts/phdometer.stub.js')
+

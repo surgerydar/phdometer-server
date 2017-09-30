@@ -1,0 +1,13 @@
+html
+    head
+        title= title
+        link(rel='stylesheet', href='styles/phdometer.css')
+        meta( name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' )
+    body
+        #container(style='align-items: center;')
+            h1( style='text-align: center; padding-top: 8px;' ) #{subject}
+            content #{message}
+            br
+            if( link )
+                a(href= link, class='text-center new-account') #{linktext}
+        script( type='text/javascript', src='scripts/phdometer.stub.js')

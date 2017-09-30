@@ -1,0 +1,19 @@
+html
+    head
+        title= title
+        link(rel='stylesheet', href='styles/phdometer.css')
+        meta( name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' )
+    body
+        h1( style='text-align: center; padding-top: 8px;' ) Login
+        form#login( action='/login', method='POST' class='authentication')
+            input(type='text', name='username' placeholder='username', required, autofocus)
+            input(type='password', name='password' placeholder='password', required)
+            button(class='login', type='submit') Sign in
+            br
+            a(href='/signup', class='text-center new-account') Create an account
+            br
+            a(href='/recoverpassword', class='text-center new-account') Forgotten password?
+            #message
+                if message
+                h1.text-center.error-message #{message}
+        script( type='text/javascript', src='scripts/phdometer.stub.js')
