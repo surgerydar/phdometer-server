@@ -309,8 +309,8 @@ db.connect(
     //
     // start app
     //
-    console.log( 'starting application : port : ' + env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080 + " : ip : " + env.IP || env.OPENSHIFT_NODEJS_IP || '0.0.0.0' );
-    app.listen( env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080, env.IP || env.OPENSHIFT_NODEJS_IP || '0.0.0.0', function () {
+    console.log( 'starting application : port : ' + ( env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080 ) + " : ip : " + ( env.IP || env.OPENSHIFT_NODEJS_IP || '10.129.137.247' ) );
+    app.listen( env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080, env.IP || env.OPENSHIFT_NODEJS_IP || '10.129.137.247', function () {
       console.log('Application worker ' + process.pid + ' started...');
     });
 }).catch( function( err ) {
