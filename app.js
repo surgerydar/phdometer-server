@@ -305,16 +305,13 @@ db.connect(
             res.json( { subject: subject, method: req.method, status : 'ERROR', message : "empty user" } );
         }
     });
-    
     //
     // start app
     //
-    console.log( 'starting application : port : ' + env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080 + " : ip : " env.IP || env.OPENSHIFT_NODEJS_IP || '0.0.0.0' );
+    console.log( 'starting application : port : ' + env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080 + " : ip : " + env.IP || env.OPENSHIFT_NODEJS_IP || '0.0.0.0' );
     app.listen( env.PORT || env.OPENSHIFT_NODEJS_PORT || 8080, env.IP || env.OPENSHIFT_NODEJS_IP || '0.0.0.0', function () {
       console.log('Application worker ' + process.pid + ' started...');
     });
-    
-
 }).catch( function( err ) {
 	console.log( 'unable to connect to database : ' + err );
 });
