@@ -305,6 +305,7 @@ db.connect(
             res.json( { subject: subject, method: req.method, status : 'ERROR', message : "empty user" } );
         }
     });
+    
     //
     // start app
     //
