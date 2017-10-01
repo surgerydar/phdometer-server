@@ -306,9 +306,11 @@ input[type='range']::-ms-thumb {
     text-align: center;
     cursor: pointer;
 }
+
 .tab:first-child {
     border: none;
 }
+
 .tab.selected {
     background-color: white;
     color: #284EFF;    
@@ -328,5 +330,3 @@ input[type='range']::-ms-thumb {
     -webkit-transition: left .5s; /* Safari */
     transition: left .5s;
 }
-
-#

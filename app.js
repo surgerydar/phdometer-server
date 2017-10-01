@@ -74,7 +74,7 @@ db.connect(
 	//
 	// initialise authentication
 	//
-	var mymusic_pasport = require('./phdometer.passport.js')(passport,db);
+	var phdometer_passport = require('./phdometer.passport.js')(passport,db);
 	//
 	// authentication redirect
 	//
@@ -232,7 +232,7 @@ db.connect(
     }
     console.log( 'configuring routes' );
     app.get('/', function (req, res) {
-        //console.log( 'GET /' );
+        console.log( 'GET /' );
         getLeaderBoard(res).then(function(result) {
             res.render('index', { title: 'PhDometer 3.0', leaderboard : result } );
         }).catch( function(err) {
@@ -240,7 +240,7 @@ db.connect(
         });
     });
     app.get('/community', is_loggedin, function (req, res) {
-        //console.log( 'GET /' );
+        //console.log( 'GET /community' );
         db.getActivityList({username:req.user.username},{}).then( function( result ) {
             var data = { 
                 title: 'PhDometer 3.0', 
