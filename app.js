@@ -232,7 +232,7 @@ db.connect(
     }
     console.log( 'configuring routes' );
     app.get('/', function (req, res) {
-        console.log( 'GET /' );
+        //console.log( 'GET /' );
         getLeaderBoard(res).then(function(result) {
             res.render('index', { title: 'PhDometer 3.0', leaderboard : result } );
         }).catch( function(err) {
